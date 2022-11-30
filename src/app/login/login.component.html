@@ -1,0 +1,62 @@
+<div class="text-center" *ngIf="isLogged; else loggedOut">
+  <p>Sesión iniciada</p>
+</div>
+
+<ng-template #loggedOut>
+  <div class="caja">
+    <div class="card row">
+      <div style="padding-top: 10px;">
+        <div class="card-header">
+          <h3>Iniciar Sesión</h3>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="formLogin">
+            <div style="margin: 0 auto;">
+              <table style="margin: 0 auto;">
+                <tr>
+                  <td style="width: 100px;">Usuario</td>
+                  <td style="width: 160px;">
+                    <mat-form-field>
+                      <input autofocus type="text" type="text" formControlName="userName" matInput
+                        placeholder="Usuario">
+                    </mat-form-field>
+                    <mat-error *ngIf="usuarioVacio">
+                      <i class="fas fa-exclamation-triangle" style="color: red;">
+                        <span style="color: red; font-size: 12px;"> Usuario es requerido</span>
+                      </i>
+                    </mat-error>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 100px;">Contraseña</td>
+                  <td style="width: 160px;">
+                    <mat-form-field>
+                      <input type="password" formControlName="contrasena" matInput
+                        placeholder="Contraseña">
+                    </mat-form-field>
+                    <mat-error *ngIf="contrasenaVacia">
+                      <i class="fas fa-exclamation-triangle" style="color: red;">
+                        <span style="color: red; font-size: 12px;"> Contraseña es requerida</span>
+                      </i>
+                    </mat-error>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </form>
+        </div>
+
+
+
+        <div class="row" style="margin-top: 15px;">
+          <div class="col">
+            <button mat-button class="btn login_btn" (click)="Ingresar()">
+              Ingresar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
